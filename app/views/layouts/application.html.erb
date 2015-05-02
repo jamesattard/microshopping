@@ -21,5 +21,20 @@
     </div>
 
     <%= javascript_include_tag 'application' %>
+    <script src="//js.pusher.com/2.2/pusher.min.js"></script>
+    <script>
+      // Enable pusher logging - don't include this in production
+      Pusher.log = function(message) {
+        if (window.console && window.console.log) {
+          window.console.log(message);
+        }
+      };
+
+      var pusher = new Pusher('02d4d20f0aa125146ac8');
+      var channel = pusher.subscribe('test_channel');
+      channel.bind('my_event', function(data) {
+        alert(data.message);
+      });
+    </script>
   </body>
 </html>

@@ -25,6 +25,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
+gem 'pusher'
 
 group :production do
   gem 'rails_12factor'
