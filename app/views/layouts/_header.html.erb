@@ -10,6 +10,12 @@
       <a class="navbar-brand" href="<%= root_path %>">MicroShopping</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to "Subastas", auctions_path %>
+        </li>
+      </ul>
+
       <% if !current_user %>
         <form class="navbar-form navbar-right">
           <a href="<%= new_user_session_path %>" class="btn btn-success">Iniciar Sesion</a>

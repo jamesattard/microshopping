@@ -1,0 +1,11 @@
+.thumbnail.auction-thumb
+  = link_to auction_path(auction)
+    = image_tag auction.product.picture.url
+
+  .caption
+    h3= auction.product.name
+    p.opening-time= auction.started_at
+    p 
+      a.btn.btn-primary href='#' style="margin-right: 5px;" Pujar
+      a.btn.btn-default href="#{auction_path(auction)}" Mas Info
+      span $1

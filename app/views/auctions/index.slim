@@ -1,0 +1,8 @@
+.container style="margin-top: 40px;"
+  h2 Subastas proximas
+
+  - @auctions.each_slice(4) do |slice|
+    .row
+      - slice.each do |auction|
+        .col-md-3
+          = render 'auctions/opening_soon', auction: auction  
