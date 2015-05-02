@@ -16,6 +16,8 @@
 //= require_tree .
 
 $(document).ready(function() {
+  var pusher = new Pusher('02d4d20f0aa125146ac8');
+  var channel = pusher.subscribe('bid_channel');
 
   $('.bid-button').click(function() {
     $(this).addClass('disabled');
@@ -27,15 +29,16 @@ $(document).ready(function() {
     $.ajax({
       type: "POST",
       url: 'bid',
-      data: { auction_id: auctionId },
-      success: function(data, status, xhr) {
-        console.log(data);
-        var price = button.parent().find('.price');
-        console.log(price);
-        price.text("$" + data.price);
-        button.removeClass('disabled');
-      }
+      data: { auction_id: auctionId }
     });
   }
+
+  
+  channel.bind('new_bid', function(data) {
+    var bid_button = $('[data-auction-id="' + data.auction_id + '"]')
+    var price = bid_button.parent().find('.price');
+    price.text("$" + data.price);
+    bid_button.removeClass('disabled');
+  });
 
 });

@@ -12,6 +12,10 @@ class BidsController < ApplicationController
       bid.save
       auction.price = price + 1
       auction.save
+      Pusher['bid_channel'].trigger('new_bid', {
+        auction_id: bid.auction_id,
+        price: bid.price
+      })
       return render json: bid
     else
       return render json: { message: 'User needs to be authenticated.' }, status: 500
