@@ -30,6 +30,9 @@ $(document).ready(function() {
       data: { auction_id: auctionId },
       success: function(data, status, xhr) {
         console.log(data);
+        var price = button.parent().find('.price');
+        console.log(price);
+        price.text("$" + data.price);
         button.removeClass('disabled');
       }
     });

@@ -5,6 +5,13 @@ class BidsController < ApplicationController
       bid = Bid.new(bid_params)
       bid.user_id = current_user.id
       bid.save
+
+      auction = bid.auction
+      price = auction.price
+      bid.price = price + 1
+      bid.save
+      auction.price = price + 1
+      auction.save
       return render json: bid
     else
       return render json: { message: 'User needs to be authenticated.' }, status: 500

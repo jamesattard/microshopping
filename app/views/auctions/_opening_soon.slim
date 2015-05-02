@@ -7,8 +7,8 @@
     p.opening-time= auction.started_at
     p 
       - if current_user
-        a.bid-button.btn.btn-primary href='#' style="margin-right: 5px;" data-auction-id="#{auction.id}" Pujar
+        a.bid-button.btn.btn-primary href='#!' style="margin-right: 5px;" data-auction-id="#{auction.id}" Pujar
       - else
         a.btn.btn-primary href='#{new_user_session_path}' style="margin-right: 5px;" Pujar
       a.btn.btn-default href="#{auction_path(auction)}" Mas Info
-      span $1
+      span.price= "$#{auction.price}"
