@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">MicroShopping</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <% if !current_user %>
+        <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <input type="text" placeholder="Email" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Password" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-success">Iniciar Sesion</button>
+        </form>
+      <% else %>
+        <p class="pull-right" style="color: white; margin-top: 14px;">
+          Bienvenidos <%= current_user.email %>!
+          <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete %>
+        </p>
+      <% end %>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
