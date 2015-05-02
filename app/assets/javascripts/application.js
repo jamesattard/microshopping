@@ -14,3 +14,25 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function() {
+
+  $('.bid-button').click(function() {
+    $(this).addClass('disabled');
+    var auctionId = $(this).data('auctionId');
+    sendBidForAuction(auctionId, $(this));
+  });
+
+  function sendBidForAuction(auctionId, button) {
+    $.ajax({
+      type: "POST",
+      url: 'bid',
+      data: { auction_id: auctionId },
+      success: function(data, status, xhr) {
+        console.log(data);
+        button.removeClass('disabled');
+      }
+    });
+  }
+
+});
