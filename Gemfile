@@ -23,6 +23,8 @@ gem 'rack-mini-profiler'
 gem 'faker'
 gem 'simple_form'
 gem 'devise'
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
 
 group :production do
   gem 'rails_12factor'
